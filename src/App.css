@@ -220,8 +220,8 @@ h2 {
   font-weight: 6 00;
   color: #666;
 }
-.particular-profile-card-left p {
-  width: 60%;
+.particular-profile-card-left a {
+  /* width: 60%; */
   margin: 2px 0px;
   border: 1px solid #282828;
   padding: 7px 15px;
@@ -230,14 +230,21 @@ h2 {
   letter-spacing: 0.5px;
   line-height: 18px;
   background-color: #282828;
-  color: #fff;
   cursor: pointer;
+  color: #fff;
+  text-decoration: none;
 }
 
 .particular-profile-card-left p:hover {
-  background-color: #fff;
   color: #282828;
+  background-color: #fff;
 }
+
+.particular-profile-card-left a:hover {
+  color: #282828;
+  background-color: #fff;
+}
+
 .particular-profile-card-right {
   width: 50%;
 }
@@ -248,7 +255,7 @@ h2 {
   color: #444;
 }
 
-.particular-profile-card-right a {
+.episode-link {
   display: flex;
   flex-direction: column;
   padding: 2.5px 0px;
@@ -355,7 +362,7 @@ h2 {
   .particular-profile-card-left {
     width: 100%;
   }
-  .particular-profile-card-left p {
+  .particular-profile-card-left a {
     display: none;
   }
 
@@ -366,9 +373,8 @@ h2 {
     border-top: 1px solid #282828;
     margin: 10px 0 0 0;
   }
-  .particular-profile-card-right p {
+  .a-link {
     display: inline-block;
-    width: 100%;
     margin: 10px 0px;
     border: 1px solid #282828;
     padding: 7px 15px;
@@ -378,6 +384,12 @@ h2 {
     line-height: 18px;
     background-color: #282828;
     color: #fff;
+    text-decoration: none;
+  }
+
+  .a-link:hover {
+    color: #282828;
+    background-color: #fff;
   }
 
   .form-field {
