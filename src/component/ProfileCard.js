@@ -2,9 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
-// ProfileCard.propTypes = {
-//   data: PropTypes.array,
-// };
+ProfileCard.propTypes = {
+  data: PropTypes.array,
+};
 
 function ProfileCard({ data }) {
   const navigate = useNavigate();

@@ -170,7 +170,7 @@ body {
 }
 
 .form-field select {
-  width: 221px;
+  width: 75%;
   background-color: #eaeef2;
   border: 1px solid #dedede;
   height: 29px;
@@ -179,9 +179,6 @@ body {
   margin-left: 5px;
 }
 
-/* .form-field-btn {
-  width: 33.33%;
-} */
 .particular-profile-card {
   display: flex;
   width: 100%;
@@ -234,8 +231,13 @@ h2 {
   line-height: 18px;
   background-color: #282828;
   color: #fff;
+  cursor: pointer;
 }
 
+.particular-profile-card-left p:hover {
+  background-color: #fff;
+  color: #282828;
+}
 .particular-profile-card-right {
   width: 50%;
 }
@@ -269,6 +271,38 @@ h2 {
   line-height: 18px;
   background-color: #282828;
   color: #fff;
+  cursor: pointer;
+}
+.back-btn:hover {
+  background-color: #fff;
+  color: #282828;
+}
+.toggle-button {
+  width: 100%;
+  display: flex;
+}
+.text,
+.icon {
+  text-decoration: none;
+  width: 15%;
+  margin: auto;
+  border: 1px solid #282828;
+  padding: 7px 0px;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.5px;
+  line-height: 18px;
+  background-color: #282828;
+  color: #fff;
+  cursor: pointer;
+}
+.text:hover {
+  background-color: #fff;
+  color: #282828;
+}
+
+.icon {
+  display: none;
 }
 
 @media screen and (max-width: 991px) {
@@ -287,9 +321,6 @@ h2 {
   .back-btn {
     padding: 4px 15px;
   }
-  /* .form-field input[type="text"] {
-    width: 180px;
-  } */
 }
 @media screen and (max-width: 767px) {
   .profile-card {
@@ -308,9 +339,6 @@ h2 {
     padding: 0;
     text-align: center;
   }
-  /* .form-raw {
-    flex-direction: column;
-  } */
 
   .form-field {
     width: 50%;
@@ -357,6 +385,10 @@ h2 {
     width: 100%;
     margin: 0px 0px 10px 0px;
   }
+
+  .text {
+    width: 20%;
+  }
 }
 @media screen and (min-device-width: 220px) and (max-device-width: 480px) {
   .profile-cards {
@@ -385,5 +417,12 @@ h2 {
     font-size: 15px;
     width: 150px;
     padding: 5px 15px;
+  }
+
+  .text {
+    display: none;
+  }
+  .icon {
+    display: block;
   }
 }

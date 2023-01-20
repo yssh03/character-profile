@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { getFilteredData, getProfiles } from "../services/profileServices";
 import ProfileCard from "../component/ProfileCard";
-import Pagination from "../component/Pagination";
 import { genderOption, statusOption } from "../common/constant";
 import axios from "axios";
 
@@ -12,12 +11,13 @@ const initialState = {
   status: "",
   gender: "",
 };
-function Profiles() {
+function ProfileList() {
   const [data, setData] = useState([]);
   const [allData, setAllData] = useState();
   const [state, setState] = useState(initialState);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const siblingCount = 1;
@@ -146,10 +146,6 @@ function Profiles() {
     });
   };
 
-  const onPageChange = (page) => {
-    setCurrentPage(page);
-  };
-
   const onNext = (url) => {
     if (url !== null) {
       setCurrentPage(currentPage + 1);
@@ -170,75 +166,82 @@ function Profiles() {
     <>
       <div>
         <h1 className="page-title">Character Profiles</h1>
-        <form className="form-data">
-          <div className="form-raw">
-            <div className="form-field">
-              <label>Name:</label>
-              <input
-                type={"text"}
-                placeholder="Search"
-                value={state.name}
-                name="name"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-field">
-              <label>Species:</label>
-              <input
-                type={"text"}
-                placeholder="Search"
-                value={state.species}
-                name="species"
-                onChange={handleChange}
-              />{" "}
-            </div>
-            <div className="form-field">
-              <label>Type:</label>
-              <input
-                type={"text"}
-                placeholder="Search"
-                value={state.type}
-                name="type"
-                onChange={handleChange}
-              />
-            </div>
-            {/* </div>
-          <div className="form-raw"> */}
-            <div className="form-field">
-              <label>Status:</label>
-              <select name="status" id="status" onChange={handleChange}>
-                <option value="">Search</option>
-                {statusOption.map((status) => {
-                  return <option value={status.value}>{status.label}</option>;
-                })}
-              </select>
-            </div>
-            <div className="form-field">
-              <label>Gender:</label>
-              <select
-                name="gender"
-                id="gender"
-                value={state.gender}
-                onChange={handleChange}
-              >
-                <option value="">Search</option>
-                {genderOption.map((gender) => {
-                  return <option value={gender.value}>{gender.label}</option>;
-                })}
-              </select>
-            </div>
-            <div className="form-field" style={{ justifyContent: "center" }}>
-              <button
-                className="back-btn"
-                style={{ fontSize: "15px" }}
-                type="submit"
-                onClick={(e) => (e.preventDefault(), setState(initialState))}
-              >
-                Clear
-              </button>
-            </div>
-          </div>{" "}
-        </form>
+
+        <div className="toggle-button" onClick={() => setIsOpen(!isOpen)}>
+          <span className="text">Search</span>
+          <span className="icon">
+            <i class="fa fa-search"></i>
+          </span>
+        </div>
+        {isOpen && (
+          <form className="form-data">
+            <div className="form-raw">
+              <div className="form-field">
+                <label>Name:</label>
+                <input
+                  type={"text"}
+                  placeholder="Search"
+                  value={state.name}
+                  name="name"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-field">
+                <label>Species:</label>
+                <input
+                  type={"text"}
+                  placeholder="Search"
+                  value={state.species}
+                  name="species"
+                  onChange={handleChange}
+                />{" "}
+              </div>
+              <div className="form-field">
+                <label>Type:</label>
+                <input
+                  type={"text"}
+                  placeholder="Search"
+                  value={state.type}
+                  name="type"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-field">
+                <label>Status:</label>
+                <select name="status" id="status" onChange={handleChange}>
+                  <option value="">Search</option>
+                  {statusOption.map((status) => {
+                    return <option value={status.value}>{status.label}</option>;
+                  })}
+                </select>
+              </div>
+              <div className="form-field">
+                <label>Gender:</label>
+                <select
+                  name="gender"
+                  id="gender"
+                  value={state.gender}
+                  onChange={handleChange}
+                >
+                  <option value="">Search</option>
+                  {genderOption.map((gender) => {
+                    return <option value={gender.value}>{gender.label}</option>;
+                  })}
+                </select>
+              </div>
+              <div className="form-field" style={{ justifyContent: "center" }}>
+                <button
+                  className="back-btn"
+                  style={{ fontSize: "15px" }}
+                  type="submit"
+                  onClick={(e) => (e.preventDefault(), setState(initialState))}
+                >
+                  Clear
+                </button>
+              </div>
+            </div>{" "}
+          </form>
+        )}
 
         <div className="profile-cards">
           {error ? (
@@ -273,10 +276,7 @@ function Profiles() {
 
                 return (
                   <>
-                    <li
-                      // onClick={() => onPageChange(range)}
-                      className={currentPage === range ? "is-active" : ""}
-                    >
+                    <li className={currentPage === range ? "is-active" : ""}>
                       {range}
                     </li>
                   </>
@@ -300,4 +300,4 @@ function Profiles() {
   );
 }
 
-export default Profiles;
+export default ProfileList;
